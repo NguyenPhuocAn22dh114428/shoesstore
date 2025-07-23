@@ -1,0 +1,18 @@
+@model Backend.Models.Color 
+@{
+    ViewData["Title"] = "Edit Color";
+}
+
+<h1>Edit Color</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name">Color</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Save</button>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back</a>
+</form>
+

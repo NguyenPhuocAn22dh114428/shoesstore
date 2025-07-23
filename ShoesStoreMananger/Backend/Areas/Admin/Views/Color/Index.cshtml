@@ -1,0 +1,32 @@
+@model IEnumerable<Backend.Models.Color>
+@{
+    ViewData["Title"] = "Color List";
+    int index = 1;
+}
+
+<h1>Colors List</h1>
+
+<a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i> Add Color</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Color Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var color in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@color.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@color.Id" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@color.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

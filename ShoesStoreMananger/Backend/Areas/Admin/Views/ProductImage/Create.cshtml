@@ -1,0 +1,32 @@
+@model Backend.Models.ProductImage
+
+@{
+    ViewData["Title"] = "Add Product Image";
+}
+
+<h1>Add Image for Product</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    @* Gán ProductId ẩn vào form *@
+    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="IsMain" value="true" />
+    <div class="form-group">
+        <label asp-for="ImageFile">Upload Image</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+
+        @* Nếu đã có ảnh, hiển thị bên dưới *@
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="mt-2">
+                <label>Ảnh hiện tại:</label><br />
+                <img src="@Model.ImageUrl" width="150" height="150" style="object-fit:cover; border:1px solid #ccc;" />
+            </div>
+        }
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">Upload</button>
+
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
