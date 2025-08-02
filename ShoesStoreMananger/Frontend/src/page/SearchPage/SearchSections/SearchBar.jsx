@@ -1,7 +1,7 @@
 import React from "react";
 import { searchbar } from "../../../assets/icons";
 
-const SearchBar = () => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
     <div className="flex flex-col">
       <h1 className="text-[34px] text-3xl font-semibold font-montserrat mb-2">
@@ -11,6 +11,8 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Enter Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} // 👈 cập nhật từ khóa
           className="w-full h-12 bg-gray-100 pl-12 pr-4 py-2 rounded-lg shadow-sm "
         />
         <img
@@ -22,5 +24,6 @@ const SearchBar = () => {
     </div>
   );
 };
+
 
 export default SearchBar;

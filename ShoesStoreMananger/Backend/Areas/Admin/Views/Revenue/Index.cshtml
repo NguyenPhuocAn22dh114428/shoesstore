@@ -1,0 +1,20 @@
+@model IEnumerable<Backend.Controllers.RevenueStat>
+
+<h2>Thống kê doanh thu theo tháng</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tháng</th>
+            <th>Tổng doanh thu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Month</td>
+                <td>@item.TotalRevenue.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
